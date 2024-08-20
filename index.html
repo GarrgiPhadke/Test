@@ -1,0 +1,208 @@
+
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+     <style>body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color:white;
+      /*background-image:url('/static/Home.jpg'); Replace 'your-image.jpg' with the path to your image */
+      background-size: cover; /* Cover the entire viewport */
+      background-repeat: no-repeat; /* Prevent the background image from repeating */
+      background-position: center; /* Center the background image */
+     }
+  
+  .whatsapp-icon {
+    width: 35px; /* Set the desired width of the icon */
+    height: 35px; /* Set the desired height of the icon */
+    background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+}
+.call-link {
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+}
+.call-icon {
+  width: 40px; /* Increase the width of the image */
+  height: 40px; /* Increase the height of the image */
+  vertical-align: middle; /* Align the icon vertically in the middle */
+  margin-right: 8px; /* Add some space to the right of the icon */
+  border-radius: 50%; /* Make the icon round */
+  padding: 4px; /* Optional: Add some padding inside the icon */
+}
+. {
+  font-size: 1px; /* Adjust this value to your preferred size */
+}
+#menu-mobile.custom-size {  /* The container of menu list */
+  width: 80%; /* Custom width */
+  max-width: 500px; /* Custom max width */
+  height: auto; /* Custom height based on content */
+  max-height: 50vh; /* Custom max height */
+}
+</style>
+    <title>Project</title>
+</head>
+<body>
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 items-center justify-between">
+      <!-- Logo and Home link -->
+      {% load static %}
+      <a href="{% url 'index' %}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="{% static '02_2.png' %}" alt="Logo" class="w-10 h-10 text-white p-2 bg-white-500">
+
+        <span class="ml-0 text-xl">THE DESIGN ASPECT</span>
+    </a>
+    
+  
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="menu-button" class="ml-2 hover:text-pink-200 text-black text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Mobile navigation menu -->
+      <nav id="menu-mobile" class="fixed inset-0 bg-white border rounded-lg shadow-lg p-4 z-50 hidden custom-size mx-auto">
+        <button id="close-menu" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <ul class="flex flex-col mt-12">
+          <li><a href="{% url 'hub' %}" class="block py-1 px-4 text-black hover:text-pink-200 text-base">INSPIRATION HUB</a></li>
+          <li><a href="{% url 'cal' %}" class="block py-2 px-4 text-black hover:text-pink-200 text-base">BUDGET CALCULATOR</a></li>
+          <li><a href="{% url 'review' %}" class="block py-2 px-4 text-black hover:text-pink-200 text-base">REVIEW</a></li>
+          <li><a href="#" class="block py-2 px-4 text-black hover:text-pink-200 text-base">ABOUT US</a></li>
+        </ul>
+      </nav>
+
+  
+      <!-- Desktop navigation menu -->
+      <div class="hidden md:flex flex-col md:flex-row items-center space-x-5">
+        <a href="{% url 'hub' %}" class="hover:text-pink-200 text-black text-xs  ">INSPIRATION HUB</a>
+        <a href="{% url 'cal' %}" class="hover:text-pink-200 text-black text-xs">BUDGET CALCULATOR</a>
+        <a href="{% url 'review' %}" class="hover:text-pink-200 text-black text-xs">REVIEW</a>
+        <a href="#" class="hover:text-pink-200 text-black text-xs">ABOUT US</a>
+      </div>
+  
+      <!-- Contact and social icons -->
+      <div class="flex items-center space-x-3 md:space-x-4 mt-4 md:mt-0">
+        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base text-xs">
+          <a href="{% url 'contact' %}" class="flex items-center">
+            CONTACT US
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </button>
+        <a href="https://wa.me/919970440113" class="whatsapp-link" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6">
+        </a>
+        <a href="tel:+1234567890" class="call-link">
+          {% load static %}
+          <img src="{% static 'callicon.png' %}" alt="Call" class="w-6 h-6">
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  
+      <section class="text-gray-500 body-font">
+        
+        <div class="container mx-auto flex px-2 md:py-12 md:flex-row flex-col items-center">
+          <div class="lg:max-w-2xl lg:w-full md:w-full w-full"> <!-- Increased max width on large screens -->
+              {% load static %}
+              <img class="object-cover object-center rounded w-full h-auto" alt="hero" src="{% static 'ess.jpg' %}">
+          </div>
+      
+          <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col justify-center items-center text-center mb-16 md:mb-0">
+            <h1 class="title-font sm:text-sm text-sm mb-4 font-medium text-gray-900">
+                WELCOME TO HOMESCAPE!!!
+                <br class="hidden lg:inline-block text-sm">INTERIOR DESIGNS
+            </h1>
+            <p class="mb-8 leading-relaxed text-xs">
+                UNLOCK THE POTENTIAL OF YOUR LIVING SPACES: DIVE INTO OUR DIVERSE ARRAY OF HOME INTERIOR INSPIRATIONS AND UNLEASH YOUR CREATIVITY
+            </p>
+            <div class="flex justify-center">
+              {% if request.user.is_authenticated %}
+              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-xs"><a href="{% url 'account' %}">Account</a></button>
+              <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="{% url 'logout' %}">Logout</a></button>
+              {% else %}
+              <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-1 px-5 focus:outline-none hover:bg-gray-200 rounded text-xs"><a href="{% url 'register' %}">Register</a></button>
+              <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="{% url 'login' %}">Login</a></button>
+              {% endif %}
+            </div>
+          </div> 
+        </div>
+      </section>
+      <section class="text-gray-600 body-font">
+        <div class="container px-5 py-20 mx-auto">
+          <div class="flex flex-wrap -m-4 ">
+            <div class="p-4 lg:w-1/4 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-30 h-30  object-cover object-center mb-4" src="{% static 'step1.jpg' %}">
+                <div class="w-full">
+              
+                  <h2 class=" text-base  text-gray-900">
+                    <span style="font-size: 24px;">01</span> Book an appointment</h2>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 lg:w-1/4 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-30 h-30  object-cover object-center mb-4" src="{% static 'step2.jpg' %}">
+                <div class="w-full">
+                  <h2 class="text-base text-gray-900"> 
+                    <span style="font-size: 24px;">02</span> Meet our designers</h2>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 lg:w-1/4 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-30 h-30  object-cover object-center mb-4" src="{% static 'step3.jpg' %}">
+
+                <div class="w-full">
+                  <h2 class="text-base text-gray-900"> 
+                    <span style="font-size: 24px;">03</span> Personalise your designs</h2>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 lg:w-1/4 md:w-1/2">
+              <div class="h-full flex flex-col items-center text-center">
+                <img alt="team" class="flex-shrink-0 rounded-lg w-30 h-30  object-cover object-center mb-4" src="{% static 'step4.jpg' %}">
+                <div class="w-full">
+                  <h2 class="text-base text-gray-900"> 
+                    <span style="font-size: 24px;">04</span> Move in</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+          document.getElementById('menu-mobile').classList.toggle('hidden');
+        });
+      
+        document.getElementById('close-menu').addEventListener('click', function() {
+          document.getElementById('menu-mobile').classList.add('hidden');
+        });
+      </script>
+      
+    
+       
+</body>
+</html>
+{% endblock content %}
